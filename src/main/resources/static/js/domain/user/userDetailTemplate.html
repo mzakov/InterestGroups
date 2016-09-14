@@ -1,0 +1,67 @@
+<head><link href="../../../app.css" rel="stylesheet"></head><div class="container-fluid">
+	<div class="col-md-10 col-md-offset-1">
+
+		<div class="jumbotron">
+			<h1>{{userDetailController.person.name}}</h1>
+		</div>
+
+		<div>
+			<form class="form-horizontal">
+
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="name"
+							placeholder="Name" ng-model="userDetailController.person.name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="city" class="col-sm-2 control-label">City</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="city"
+							placeholder="Name" ng-model="userDetailController.person.city.name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">State</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="state"
+							placeholder="Name" ng-model="userDetailController.person.city.state.name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="groups" class="col-sm-2 control-label">Groups</label>
+					<div class="col-sm-8">
+						<div ng-repeat="group in userDetailController.groupInfo"> 
+							<div class="checkbox">
+ 								<label><input type="checkbox" name="{{group.groupName}}" value="" ng-checked="group.enabled">{{group.groupName}}</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="interests" class="col-sm-2 control-label">Interests</label>
+					<div class="col-sm-8">
+						<div ng-repeat="interest in userDetailController.interests"> 				
+							<div class="checkbox">
+  								<label><input type="checkbox" name="{{interest.name}}" value="" ng-checked="false">{{interest.name}}</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<button type="submit" class="btn btn-success">Save!</button>
+					</div>
+				</div>
+			</form>
+		</div>
+
+	</div>
+</div>
+
+<script type="text/javascript" src="../../../app.js"></script>

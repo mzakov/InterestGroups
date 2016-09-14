@@ -1,0 +1,15 @@
+<head><link href="../../../app.css" rel="stylesheet"></head><div class="container-fluid">
+	<div class="col-md-10 col-md-offset-1">
+		<div class="jumbotron">
+			<h1>People</h1>
+		</div>
+
+		<div class="list-group">
+			<a ng-repeat="person in userController.people"
+				ng-href="#people/{{person.id}}" class="list-group-item"> <span
+				class="glyphicon glyphicon-user" aria-hidden="true"></span>
+				{{person.name}}
+			</a>
+		</div>
+	</div>
+</div><script type="text/javascript" src="../../../app.js"></script>

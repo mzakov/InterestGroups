@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<div class="col-md-10 col-md-offset-1">
+
+		<div class="jumbotron">
+			<h1>{{userDetailController.person.name}}</h1>
+		</div>
+
+		<div>
+			<form novalidate class="form-horizontal">
+
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="name"
+							placeholder="Name" ng-model="userDetailController.person.name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">State</label>
+					<div class="col-sm-8" ng-model="userDetailController.person.city.state.name" checkboxes="true" ng-dropdown-multiselect="" extra-settings="statesConfig" options="userDetailController.states" selected-model="userDetailController.person.city.state">
+
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="city" class="col-sm-2 control-label">City</label>
+					<div class="col-sm-8" ng-model="userDetailController.person.name" checkboxes="true" ng-dropdown-multiselect="" extra-settings="statesConfig" options="userDetailController.cities" selected-model="userDetailController.person.city">
+
+					</div>
+				</div>
+			
+				<div class="form-group">
+					<label for="groups" class="col-sm-2 control-label">Groups in home city:</label>
+					<div class="col-sm-8">
+						<div ng-model="userDetailController.person.groups" checkboxes="true" ng-dropdown-multiselect="" extra-settings="interestsConfig" options="userDetailController.groups" selected-model="userDetailController.person.groups"> 
+							
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="interests" class="col-sm-2 control-label">Interests</label>
+					<div class="col-sm-8" >
+						<div ng-model="userDetailController.person.interests" checkboxes="true" ng-dropdown-multiselect="" extra-settings="interestsConfig" options="userDetailController.interests" selected-model="userDetailController.person.interests"> 				
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<button type="submit" class="btn btn-success" ng-click="userDetailController.update(userDetailController.person)" value="Save">Save!</button>
+					</div>
+				</div>
+			</form>
+			<pre>person = {{userDetailController.person | json}}</pre>
+		</div>
+
+	</div>
+</div>
+
