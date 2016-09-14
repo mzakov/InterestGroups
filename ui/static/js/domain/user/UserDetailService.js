@@ -10,7 +10,7 @@ angular.module('app').service('UserDetailService', ['$http', 'srvUrl', function(
 	
 	this.getGroups = function(city_id) { return $http.get(srvUrl + 'cities/' + city_id + '/groups/')};
 	
-	this.getCities = function(state_id) { return $http.get(srvUrl + 'states/' + state_id + '/cities/')};
+	this.getCities = function() { return $http.get(srvUrl + 'cities/')};
 	
 	this.getStates = function() { return $http.get(srvUrl + 'states/')};
 }])
