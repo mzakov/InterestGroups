@@ -1,0 +1,61 @@
+<div class="container-fluid">
+	<div class="col-md-10 col-md-offset-1">
+
+		<div class="jumbotron">
+			<h1>{{$ctrl.person.name}}</h1>
+		</div>
+
+		<div>
+			<form novalidate class="form-horizontal">
+
+				<div class="form-group">
+					<label for="name" class="col-sm-2 control-label">Name</label>
+					<div class="col-sm-8">
+						<input type="text" class="form-control" id="name"
+							placeholder="Name" ng-model="$ctrl.person.name">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">State</label>
+					<div class="col-sm-8" >
+					<h4>{{$ctrl.person.city.state.name}}</h4>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="city" class="col-sm-2 control-label">City</label>
+					<div class="col-sm-8" ng-model="$ctrl.person.city" group-by="state" checkboxes="true" ng-dropdown-multiselect="" extra-settings="statesConfig" options="$ctrl.cities" selected-model="$ctrl.person.city">
+
+					</div>
+				</div>
+			
+				<div class="form-group">
+					<label for="groups" class="col-sm-2 control-label">Groups in home city:</label>
+					<div class="col-sm-8">
+						<div ng-model="$ctrl.person.groups" checkboxes="true" ng-dropdown-multiselect="" extra-settings="interestsConfig" options="$ctrl.groups" selected-model="$ctrl.person.groups"> 
+							
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="interests" class="col-sm-2 control-label">Interests</label>
+					<div class="col-sm-8" >
+						<div ng-model="$ctrl.person.interests" checkboxes="true" ng-dropdown-multiselect="" extra-settings="interestsConfig" options="$ctrl.interests" selected-model="$ctrl.person.interests"> 				
+							
+						</div>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-8">
+						<button type="submit" class="btn btn-success" ng-click="$ctrl.update($ctrl.person)" value="Save">Save!</button>
+					</div>
+				</div>
+			</form>
+			<pre>person = {{$ctrl.person | json}}</pre>
+		</div>
+
+	</div>
+</div>
+

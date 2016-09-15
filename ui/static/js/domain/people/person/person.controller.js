@@ -1,8 +1,14 @@
-angular.module('app').controller('UserDetailController', ['UserDetailService', '$routeParams', '$scope' ,function(UserDetailService, $routeParams, $scope)
-{
-	
-	
-	/////////////////////////////////////////////////
+export default
+['$log', '$scope', 'PersonService', '$http', '$route',
+ /* @ngInject */
+ class PersonController {
+   constructor ($log, $scope, PersonService, $http , $route) {
+ 	
+ 	$scope.loaded = false
+ 	
+ 	$log.debug('PersonController instantiated')
+    
+ 	/////////////////////////////////////////////////
 	$scope.master = {};
 
     $scope.update = function(user) {
@@ -15,45 +21,29 @@ angular.module('app').controller('UserDetailController', ['UserDetailService', '
 
     $scope.reset();
 	////////////////////////////////////////////////
-	
-	var ctrl = this;
+    
+    var ctrl = this;
 	var city_id;
 	
-
-//	ctrl.getGroupInfo = function(person, groups) { 
-//		
-//		let enabledGroupIds = person.groups.map(group => {return group.id});
-//		
-//		return groups.map((group) => {
-//			let res = { 'groupName' : group.name, 'enabled' : false }
-//			
-//			if(enabledGroupIds.includes(group.id)){
-//				res.enabled = true;
-//			}
-//			return res;
-//		});
-//			
-//	}
-	
-	UserDetailService.getUserDetails($routeParams.id).then(function(result){
+	PersonService.getPerson($route.current.params.id).then((result) => {
 		ctrl.person = result.data;
 		return ctrl.person;
 	}).then(person => {
 		let id = person.city.id;
-		UserDetailService.getGroups(id).then(function(result){
+		PersonService.getGroups(id).then(function(result){
 			ctrl.groups = result.data;
 			return person;
 		}).then((person) => {
-			UserDetailService.getInterests().then(function(result){
+			PersonService.getInterests().then(function(result){
 				ctrl.interests = result.data;
 				console.dir(ctrl.interests);
 				return person;
 			}).then((person) => {
-				UserDetailService.getCities(person.city.state.id).then(function(result){
+				PersonService.getCities(person.city.state.id).then(function(result){
 					ctrl.cities = result.data;
 					console.dir(person.city.state.id);
 				}).then(() => {
-					UserDetailService.getStates().then(function(result){
+					PersonService.getStates().then(function(result){
 						ctrl.states = result.data;
 						console.dir(ctrl.states);
 					});
@@ -71,7 +61,7 @@ angular.module('app').controller('UserDetailController', ['UserDetailService', '
 	};
 	
 	ctrl.update = function(person) {
-		UserDetailService.patchUser(person);
+		PersonService.patchUser(person);
 	}
 
 	$scope.interestsConfig = {
@@ -94,10 +84,13 @@ angular.module('app').controller('UserDetailController', ['UserDetailService', '
 				return itemText;
 			},
 			enableSearch: true,
-			externalIdProp: ''
+			externalIdProp: '',
+			groupByTextProvider: function(groupValue) { 
+				return groupValue.name
+			}
 		}
 	
-//	console.dir(groupsIds);
 
-	
-}]);
+ 	$scope.loaded = true
+   }
+ }]
