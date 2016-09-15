@@ -1,6 +1,7 @@
 import '../domain/user/UserService.js'
 import '../domain/user/UserDetailService.js'
 import '../domain/interests/InterestsService.js'
+import home from './app.component.js'
 
 angular.
   module('app').
@@ -8,13 +9,7 @@ angular.
     function config($routeProvider, baseRoute, homePage) {
 
       $routeProvider.
-      	when('/home', {
-          
-          templateUrl: homePage,
-          controller: 'HomeController',
-          controllerAs: 'homeController'
-          
-        }).
+      	when('/home', home).
       	when('/people', {
           
           templateUrl: baseRoute + 'user/userTemplate.html',

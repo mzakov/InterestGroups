@@ -45,7 +45,7 @@ const loaders = [
 	test: /\.html$/,
     exclude: /node_modules/,
     include: /js/,
-    loader: [
+    loaders: [
              'ngtemplate?requireAngular',
              'html'
              ]

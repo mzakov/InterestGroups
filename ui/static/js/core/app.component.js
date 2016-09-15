@@ -1,11 +1,14 @@
 import templateUrl from './app.component.html'
 
 export default {
-	templateUrl
-	controller: 
-		class AppController {
-		
-	},
-	controllerAs:
-		'$app'
+  templateUrl: 'js/core/home.html',
+  controllerAs: 'homeController',
+  controller: ['$log',
+    /* @ngInject */
+    class HomeController {
+      constructor ($log) {
+        $log.debug('AppController instantiated')
+        this.message = 'booooo'
+      }
+    }]
 }
