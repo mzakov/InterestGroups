@@ -4,6 +4,7 @@ export default
 		$routeProvider
 			.when('/home', {
 				template: "<home></home>"
-		})
+			})
+			.otherwise('/home')
 	}
 ]
