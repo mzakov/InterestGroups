@@ -5,14 +5,12 @@ const webpack = require('webpack')
 const PATHS = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin')
-const devtool = 'cheap-module-eval-source-map'
-//const ngAnnotatePlugin = 'ng-annotate-webpack-plugin'
+const devtool = 'eval-source-map'
 
 const entry = {
   hot: 'webpack/hot/dev-server',
-  polyfills: './static/js/core/polyfills.js',
   vendors: './static/js/core/vendors.js',
-  app: './static/js/core/index.js'
+  main: ['babel-polyfill', './static/js/core/main.js']
 }
 
 const output = {
@@ -83,13 +81,8 @@ const plugins = [
   new HtmlWebpackPlugin({
     inject: 'head',
     template: './static/index.html',
-    chunksSortMode: 'none'
+    hash: true
   })
-//  ,
-//  new ngAnnotatePlugin({
-//      add: true,
-//  })
-
 ]
 
 const devServer = {
