@@ -13,9 +13,16 @@ export default
 	
 	getInterests () { return this.$http.get(this.srvUrl + 'interests/') };
 	
-	getGroups (city_id) { return this.$http.get(this.srvUrl + 'cities/' + city_id + '/groups/')};
+	getCityGroups (city_id) { return this.$http.get(this.srvUrl + 'cities/' + city_id + '/groups/')};
+	
+	getAllGroups () { return this.$http.get(this.srvUrl + 'groups/')};
 	
 	getCities () { return this.$http.get(this.srvUrl + 'cities/')};
 	
 	getStates () { return this.$http.get(this.srvUrl + 'states/')};
+	
+//	isMember (groups, group_id) {
+//		var groupsIds = groups.map((group) => {return group.id});
+//		return groupsIds.includes(group_id);
+//	};
 }]

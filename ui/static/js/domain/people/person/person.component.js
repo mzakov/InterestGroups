@@ -5,6 +5,6 @@ import PersonService from './person.service.js'
 
 export default {
   templateUrl,
-  controllerAs: '$ctrl',
+  controllerAs: 'ctrl',
   controller: PersonController
 }

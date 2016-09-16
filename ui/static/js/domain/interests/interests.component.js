@@ -5,6 +5,6 @@ import InterestsService from './interests.service.js'
 
 export default {
   templateUrl,
-  controllerAs: '$ctrl',
+  controllerAs: 'ctrl',
   controller: InterestsController
 }

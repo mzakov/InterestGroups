@@ -2,7 +2,7 @@ import templateUrl from './home.component.html'
 
 export default {
   templateUrl,
-  controllerAs: '$home',
+  controllerAs: 'home',
   controller: ['$log',
     /* @ngInject */
     class HomeController {

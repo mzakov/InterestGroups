@@ -5,10 +5,11 @@ import home from './home.component.js'
 import people from '../domain/people/people.module.js'
 import interests from '../domain/interests/interests.module.js'
 import homeRoute from './home.route.js'
+import 'checklist-model'
 
 export default
 	angular
-		.module('app', ['ngRoute', 'angularjs-dropdown-multiselect', 'people', 'interests'])
+		.module('app', ['ngRoute', 'angularjs-dropdown-multiselect', 'people', 'interests', 'checklist-model'])
 		.component('home', home)
 		.constant('srvUrl', 'http://localhost:8080/')
 		.config(homeRoute)	
